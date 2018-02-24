@@ -1,0 +1,30 @@
+header{
+    background-color: rgb(31, 27, 27);
+    height: 75px;
+    padding-top: 4px;
+    color: rgb(236, 236, 236);
+    font-size: 2em;
+    text-align: left;
+    
+}
+span{
+    color: rgb(236, 236, 236);
+    margin: auto 15px;
+}
+
+.name1{
+    font-size: 12px;
+    margin: auto 20px;
+    line-height: 1px;
+  }
+
+header a{
+    color:rgb(236, 236, 236);
+    margin: auto 10px;
+    text-decoration: none;
+}
+
+header a:hover{
+    color: rgb(160, 133, 133);
+    text-decoration: none;
+}
