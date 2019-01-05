@@ -11,6 +11,7 @@ class Chart extends Component {
       alltime:[],
       recent:[],
       status:true,
+      err: false
     }
   }
   getRecentData(){
@@ -18,20 +19,27 @@ class Chart extends Component {
     fetch(l1)
     .then(results => results.json())
     .then(data => {this.setState({recent: data});
-    });
+    }).catch(
+      this.setState({err: true})
+    );
+    
   }
   getAlltimeData(){
     const l2 = 'https://fcctop100.herokuapp.com/api/fccusers/top/alltime';
     fetch(l2)
     .then(results => results.json())
     .then(data => {this.setState({alltime: data});
-    });
+    }).catch(
+      this.setState({err:true})
+    );
+    
   }
 
     changeStatus(val){
       if (this.state.status !== val) {
         this.setState({ status: val});
       }
+
     }
     componentDidMount(){
       this.getRecentData();
@@ -41,7 +49,7 @@ class Chart extends Component {
 
 
   render() {
-    const { recent, alltime, status } = this.state;
+    const { recent, alltime, status, err } = this.state;
 
     return (
       <div>
@@ -49,6 +57,7 @@ class Chart extends Component {
       <div className="col-md-2">
       </div>
       <div className="col-md-8">
+      {err? " The data is currently not available, please try agian later.":
         <Table>
         <thead>
             <tr>
@@ -83,7 +92,7 @@ class Chart extends Component {
         )}
             </tbody>
           </Table>
-      
+        }
       </div>
       <div className="col-md-2">
       </div>
